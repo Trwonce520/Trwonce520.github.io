@@ -3,47 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>小叶的科技视界</title>
+    <title>小叶的科技空间</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* 引入全局字体与基础样式 */
         :root {
-            --bg-color: #f5f5f7;
             --text-main: #1d1d1f;
             --text-muted: #86868b;
             --link-color: #0066cc;
-            --card-bg: #ffffff;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text-main);
+            /* 苹果标志性的流体渐变环境光背景 */
+            background-color: #f5f5f7;
+            background-image: 
+                radial-gradient(at 10% 0%, rgba(228, 230, 255, 0.8) 0px, transparent 50%),
+                radial-gradient(at 90% 10%, rgba(255, 235, 245, 0.8) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(224, 245, 255, 0.7) 0px, transparent 50%);
+            background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 顶部毛玻璃导航栏 */
+        /* 顶部毛玻璃导航栏：背景有了颜色，毛玻璃才会有质感 */
         nav {
             position: sticky;
             top: 0;
             display: flex;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: saturate(180%) blur(24px);
+            -webkit-backdrop-filter: saturate(180%) blur(24px);
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
             z-index: 100;
         }
 
         nav a {
-            margin: 0 22px;
+            margin: 0 24px;
             text-decoration: none;
-            color: rgba(0, 0, 0, 0.8);
-            font-size: 12px;
-            font-weight: 400;
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 13px;
+            font-weight: 500;
             letter-spacing: -0.01em;
             transition: color 0.3s;
         }
@@ -55,78 +59,88 @@
         /* 英雄区域 (Hero Section) */
         .hero {
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 140px 20px 100px;
         }
 
         .hero h1 {
-            font-size: 56px;
-            font-weight: 600;
-            letter-spacing: -0.005em;
-            margin: 0 0 12px 0;
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin: 0 0 16px 0;
+            /* 苹果风渐变文字 */
+            background: linear-gradient(135deg, #1d1d1f 0%, #5d5d6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 24px;
-            font-weight: 400;
+            font-size: 28px;
+            font-weight: 500;
             color: var(--text-muted);
+            letter-spacing: -0.01em;
             margin: 0;
         }
 
         /* 内容卡片网格 */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            max-width: 1060px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px 100px;
+            padding: 0 20px 120px;
         }
 
-        /* 悬浮圆角卡片 */
+        /* iOS 小组件级别的毛玻璃卡片 */
         .card {
-            background-color: var(--card-bg);
-            border-radius: 18px;
-            padding: 32px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(40px) saturate(150%);
+            -webkit-backdrop-filter: blur(40px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 32px; /* 更大的圆角 */
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             display: flex;
             flex-direction: column;
         }
 
         .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.85);
         }
 
         .card-tag {
             color: var(--link-color);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
         }
 
         .card h3 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 600;
             margin: 0 0 12px 0;
-            letter-spacing: 0.01em;
+            letter-spacing: -0.015em;
+            line-height: 1.2;
         }
 
         .card p {
             font-size: 17px;
             color: var(--text-muted);
-            line-height: 1.47;
-            margin: 0 0 24px 0;
+            line-height: 1.5;
+            margin: 0 0 32px 0;
+            font-weight: 400;
             flex-grow: 1;
         }
 
         .read-more {
             color: var(--link-color);
             font-size: 17px;
-            font-weight: 400;
+            font-weight: 500;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -134,19 +148,20 @@
 
         .read-more::after {
             content: " ›";
-            font-size: 20px;
+            font-size: 22px;
             margin-left: 4px;
-            transition: transform 0.2s;
+            transition: transform 0.2s ease;
         }
 
         .card:hover .read-more::after {
-            transform: translateX(4px);
+            transform: translateX(6px);
         }
 
         /* 响应式调整 */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 40px; }
-            .hero p { font-size: 20px; }
+            .hero h1 { font-size: 48px; }
+            .hero p { font-size: 22px; }
+            .card { padding: 32px; border-radius: 28px; }
         }
     </style>
 </head>
@@ -161,28 +176,25 @@
     </nav>
 
     <section class="hero">
-        <h1>小叶的科技空间。</h1>
-        <p>纯粹的代码，极致的硬件，与数字生活。</p>
+        <h1>纯粹的数字视界。</h1>
+        <p>代码，硬件，与你的生活哲学。</p>
     </section>
 
     <section class="grid-container">
-        <!-- 文章卡片 1 -->
         <div class="card">
             <span class="card-tag">硬件排查</span>
-            <h3>系统异常与 BIOS 引导修复实录</h3>
+            <h3>系统异常与 BIOS<br>引导修复实录</h3>
             <p>记录一次 CPU 满载 93% 的性能瓶颈追踪，以及主板无法正常越过 BIOS 引导的底层逻辑排查过程。</p>
             <a href="#" class="read-more">阅读全文</a>
         </div>
 
-        <!-- 文章卡片 2 -->
         <div class="card">
             <span class="card-tag">Web 开发</span>
-            <h3>从零构建 HTML 语义化网页</h3>
+            <h3>从零构建 HTML<br>语义化网页</h3>
             <p>抛弃繁杂的冗余框架，探讨如何仅用最基础的 HTML 结构解决具体的网页技术需求，回归代码之美。</p>
             <a href="#" class="read-more">阅读全文</a>
         </div>
 
-        <!-- 文章卡片 3 -->
         <div class="card">
             <span class="card-tag">数字生活</span>
             <h3>无线耳机选购逻辑</h3>
@@ -190,10 +202,9 @@
             <a href="#" class="read-more">阅读全文</a>
         </div>
         
-        <!-- 文章卡片 4 -->
         <div class="card">
             <span class="card-tag">网络配置</span>
-            <h3>DHCP 服务异常与权限修复</h3>
+            <h3>DHCP 服务异常与<br>权限修复</h3>
             <p>深入系统服务层，解决 DHCP 无法开启及服务列表访问受限的网络连通性问题。</p>
             <a href="#" class="read-more">阅读全文</a>
         </div>
